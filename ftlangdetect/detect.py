@@ -17,7 +17,8 @@ def download_model(name):
         url = f"https://dl.fbaipublicfiles.com/fasttext/supervised-models/{name}"
         os.makedirs(FTLANG_CACHE, exist_ok=True)
         resp = requests.get(url)
-        open(target_path, "wb").write(resp.content)
+        with open(target_path, "wb") as f:
+            f.write(resp.content)
     return target_path
 
 
